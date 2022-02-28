@@ -14,7 +14,7 @@ const port = process.env.PORT || 4000;
 // static user details
 const userData = {
   userId: "789789",
-  password: "_Q7e5XYE-3LxSw!7",
+  password: "admin",
   name: "admin",
   username: "admin",
   isAdmin: true
@@ -60,9 +60,14 @@ app.get('/', (req, res) => {
 // node will act as a restful api and will give it all the leaderboard data
 app.get('/leaderboard', (req, res) => {
 
-  res.send('this is the leaderboard!!!!');
-
-
+  let sql = `SELECT * FROM leaderboard ORDER BY xp DESC;`;
+  //res.send('this is the leaderboard!!!!');
+  dbconnection.query(sql, (err, result,fields) => {
+    if (err)
+      throw err;
+    res.send(result);
+    
+  });
 });
 
 //add user to the database using post

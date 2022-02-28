@@ -1,8 +1,11 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
 let config = {
-    host    : '127.0.0.1',
-    user    : 'root',
-    password: 'root',
-    database: 'Leaderboard'
+    host    : process.env.host,
+    user    : process.env.user,
+    password: process.env.password,
+    database: process.env.database
   };
   
   module.exports = config;
